@@ -7,23 +7,32 @@ public abstract class Character : MonoBehaviour
 {
     
     //shared variables
-    public int health;
-    public int moveSpeed;
+    public float health;
+    public float moveSpeed;
     
-    public int GetHealth()
+    public float GetHealth()
     {
         return health;
     }
-    public void SetHealth(int n)
+    public virtual void TakeDamage(float n)
     {
-        health = n;
+        health -=n;
     }
-    public int GetSpeed()
+    public float GetSpeed()
     {
         return moveSpeed;
     }
-    public void SetSpeed(int n)
+   
+    public void IncreaseSpeed(float n)
     {
-        moveSpeed = n;
+        moveSpeed +=n;
+    }
+    public void DecreaseSpeed(float n)
+    {
+        moveSpeed -=n;
+    }
+    public void IncreaseHealth(float n)
+    {
+        health +=n;
     }
 }
