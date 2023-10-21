@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerStats : Character
 {
     //what variables does the player need?
+    public List<GameObject> goats = new List<GameObject>(); // a list storing all the goats the player has collected.
 
     //game over UI
     GameObject gameOver;

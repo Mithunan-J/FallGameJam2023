@@ -19,6 +19,16 @@ public class PlayerController : MonoBehaviour
 
     bool canMove = true;
 
+    Vector2 mousePosition;
+
+    //shooting mechanic
+    public GameObject bulletPrefab;
+    public Transform firePoint;
+    public float fireForce = 0.5f;
+
+    Vector3 mouse_pos;
+    Vector3 object_pos;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -62,7 +72,9 @@ public class PlayerController : MonoBehaviour
             {
                 spriteRenderer.flipX = false;
             }
-        }            
+        }
+
+        
     }
 
     public bool TryMove(Vector2 direction)
@@ -95,6 +107,23 @@ public class PlayerController : MonoBehaviour
 
     void OnFire()
     {
+        
+        //mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        ////firePoint.transform.LookAt(mousePosition);
+
+        //Vector2 aimDirection = mousePosition - rb.position;
+        //float aimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg * 90f;
+        ////firePoint.transform.rotation = Quaternion.Euler(0f, 0f, aimAngle);
+
+        Vector3 mousePosition = Input.mousePosition;
+        mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
+        Vector2 _direction = new Vector2(mousePosition.x - firePoint.position.x, mousePosition.y - firePoint.position.y);
+        firePoint.transform.up = _direction;
+
+
+        GameObject bullet = Object.Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        bullet.GetComponent<Rigidbody2D>().AddForce(firePoint.up * fireForce, ForceMode2D.Impulse);
+
         animator.SetTrigger("swordAttack");
     }
 

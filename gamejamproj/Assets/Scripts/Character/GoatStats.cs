@@ -34,6 +34,7 @@ public class GoatStats : MonoBehaviour
 
         //assign random goat type
         type = (GoatType)Random.Range(0, System.Enum.GetValues(typeof(GoatType)).Length);
+        Debug.Log(type);
 
         //for each goat type, change the material/colour of it? to distinguish
         //also establish any permanent/immediate benefits of goats
@@ -42,39 +43,51 @@ public class GoatStats : MonoBehaviour
             case GoatType.Fire:
                { 
                     goatColour = Color.red;
+                    GetComponent<SpriteRenderer>().color = goatColour;
+                    this.gameObject.name = "Fire Goat";
                }
                 break;
             case GoatType.Ice:
                 {
                     goatColour = Color.blue;
+                    GetComponent<SpriteRenderer>().color = goatColour;
+                    this.gameObject.name = "Ice Goat";
                 }
                 break;
             case GoatType.Health:
                 {
                     goatColour = Color.magenta;
+                    GetComponent<SpriteRenderer>().color = goatColour;
+                    this.gameObject.name = "Health Goat";
                 }
                 break;
             case GoatType.Speed:
                 {
                     goatColour = Color.green;
+                    GetComponent<SpriteRenderer>().color = goatColour;
                     player.GetComponent<PlayerStats>().IncreaseSpeed(1); //CHANGE THIS NUMBER ACCORDINGLY, HOW MUCH TO INCREASE SPEED
+                    this.gameObject.name = "Speed Goat";
                 }
                 break;
             case GoatType.Chunky:
                 {
                     goatColour = Color.yellow;
+                    GetComponent<SpriteRenderer>().color = goatColour;
+                    this.gameObject.name = "Chunky Goat";
                 }
                 break;
             case GoatType.Poison:
-            {
-                goatColour = Color.grey;
-            }
+                {
+                    goatColour = Color.grey;
+                    GetComponent<SpriteRenderer>().color = goatColour;
+                    this.gameObject.name = "Poison Goat";
+                }
                 break;
             default:
                 break;
         }
 
-        
+        player.GetComponent<PlayerStats>().goats.Add(this.gameObject);
     }
 
     // Update is called once per frame
