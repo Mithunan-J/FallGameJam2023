@@ -156,7 +156,7 @@ MonoBehaviour:
   player: {fileID: 205259733}
   speed: 0.2
   distance: 0
-  stoppingDistance: 0.5
+  stoppingDistance: 0.2
 --- !u!212 &75575413
 SpriteRenderer:
   m_ObjectHideFlags: 0
