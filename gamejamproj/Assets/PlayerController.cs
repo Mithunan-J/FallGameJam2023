@@ -107,14 +107,6 @@ public class PlayerController : MonoBehaviour
 
     void OnFire()
     {
-        
-        //mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        ////firePoint.transform.LookAt(mousePosition);
-
-        //Vector2 aimDirection = mousePosition - rb.position;
-        //float aimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg * 90f;
-        ////firePoint.transform.rotation = Quaternion.Euler(0f, 0f, aimAngle);
-
         Vector3 mousePosition = Input.mousePosition;
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
         Vector2 _direction = new Vector2(mousePosition.x - firePoint.position.x, mousePosition.y - firePoint.position.y);
