@@ -113,8 +113,14 @@ public class PlayerController : MonoBehaviour
         firePoint.transform.up = _direction;
 
 
-        GameObject bullet = Object.Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-        bullet.GetComponent<Rigidbody2D>().AddForce(firePoint.up * fireForce, ForceMode2D.Impulse);
+        GameObject goatProjectile = GetComponent<PlayerStats>().GoatThrown(); //goat gets dequeued and re-entered into the back of the queue
+        goatProjectile.GetComponent<GoatStats>().FireGoat();
+        goatProjectile.transform.position = firePoint.position;
+        goatProjectile.transform.rotation = firePoint.rotation;
+        //goatProjectile.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        //Object.Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        goatProjectile.GetComponent<GoatFollow>().StartGoatCooldown();
+        goatProjectile.GetComponent<Rigidbody2D>().AddForce(firePoint.up * fireForce, ForceMode2D.Impulse);
 
         animator.SetTrigger("swordAttack");
     }

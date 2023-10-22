@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public class EnemyStats : Character
 {
     Transform player;
+    public GameObject goatPrefab;
 
     public GameObject deathEffect;
     public GameObject fireEffect;
@@ -24,7 +26,12 @@ public class EnemyStats : Character
             //make death particle effect appear
             Instantiate(deathEffect, transform.position, Quaternion.identity);
 
-            Destroy(gameObject);
+            //Spawn New Goat
+            GameObject newGoat;
+            newGoat = Object.Instantiate(goatPrefab, GameObject.FindWithTag("Player").transform.position, Quaternion.identity);
+
+
+            Destroy(gameObject);            
         }
 
     }
@@ -33,13 +40,15 @@ public class EnemyStats : Character
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        //Debug.Log(GetSpeed());
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         //move enemy towards player
         transform.position = Vector2.MoveTowards(transform.position, player.position, moveSpeed);
+        Debug.Log(moveSpeed);
 
         //if poisoined
         if (poisoned)
@@ -81,6 +90,11 @@ public class EnemyStats : Character
             case GoatType.Poison:
                 {
                     poisoned = true;
+                }
+                break;
+            case GoatType.Chunky:
+                {
+                    damage += 2;
                 }
                 break;
             default:

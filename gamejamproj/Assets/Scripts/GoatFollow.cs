@@ -8,6 +8,7 @@ public class GoatFollow : MonoBehaviour
     public float speed;
     public float distance;
     public float stoppingDistance = 0.5f;
+    public bool follow = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,21 +17,48 @@ public class GoatFollow : MonoBehaviour
 
     private void FixedUpdate()
     {
-        distance = Vector2.Distance(transform.position, player.transform.position);
-        Vector2 direction = player.transform.position - transform.position;
-        
-        //Might remove later
-        direction.Normalize();
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-
-        ///end
-
-        
-
-        if(distance > stoppingDistance)
+        if(follow == true)
         {
-            transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.fixedDeltaTime);
-            transform.rotation = Quaternion.Euler(Vector3.forward * angle);
+            distance = Vector2.Distance(transform.position, player.transform.position);
+            Vector2 direction = player.transform.position - transform.position;
+
+            //Might remove later
+            direction.Normalize();
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+
+            ///end
+
+
+
+            if (distance > stoppingDistance)
+            {
+                transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.fixedDeltaTime);
+                transform.rotation = Quaternion.Euler(Vector3.forward * angle);
+            }
+        }       
+        
+        
+    }
+
+    IEnumerator GoatThrownCooldown()
+    {
+        Debug.Log("Goat Cooldown started");
+        follow = false;
+        float currentTime = 0f;
+        float targetTime = 3f;
+
+        while(currentTime < targetTime)
+        {
+            currentTime += Time.deltaTime;
+            Debug.Log("Current Time: " + currentTime);
+            yield return null;
         }
+        follow = true;
+        Debug.Log("Goat cooldown ended");
+    }
+
+    public void StartGoatCooldown()
+    {
+        StartCoroutine(GoatThrownCooldown());
     }
 }

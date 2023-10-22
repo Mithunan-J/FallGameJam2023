@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1019898725420415065}
   - component: {fileID: 7544934007050897831}
   - component: {fileID: 1934512297140027374}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -235,7 +235,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 20
   moveSpeed: 0
-  goats: []
 --- !u!1 &5509582284399282655
 GameObject:
   m_ObjectHideFlags: 0
@@ -245,7 +244,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5990027028704541223}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -278,7 +277,7 @@ GameObject:
   - component: {fileID: 644109547038317526}
   - component: {fileID: 7484576295895143295}
   - component: {fileID: 7988047064363937225}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sword Hitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}

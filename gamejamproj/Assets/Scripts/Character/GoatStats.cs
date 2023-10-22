@@ -34,7 +34,6 @@ public class GoatStats : MonoBehaviour
 
         //assign random goat type
         type = (GoatType)Random.Range(0, System.Enum.GetValues(typeof(GoatType)).Length);
-        Debug.Log(type);
 
         //for each goat type, change the material/colour of it? to distinguish
         //also establish any permanent/immediate benefits of goats
@@ -87,7 +86,8 @@ public class GoatStats : MonoBehaviour
                 break;
         }
 
-        player.GetComponent<PlayerStats>().goats.Add(this.gameObject);
+        player.GetComponent<PlayerStats>().AddGoat(this.gameObject);
+
     }
 
     // Update is called once per frame
@@ -112,11 +112,12 @@ public class GoatStats : MonoBehaviour
                 break;
             case GoatType.Chunky:
                 {
-                    //increase size
+                    this.gameObject.transform.localScale.Set(0.3f, 0.3f, 0.3f);
                 }
                 break;
             default:
                 break;
         }
     }
+
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerStats : Character
 {
     //what variables does the player need?
-    public List<GameObject> goats = new List<GameObject>(); // a list storing all the goats the player has collected.
+    public Queue<GameObject> goats = new Queue<GameObject>(); // a list storing all the goats the player has collected.
 
     //game over UI
     GameObject gameOver;
@@ -38,5 +38,17 @@ public class PlayerStats : Character
             TakeDamage(-1); //other.getcomponent....damage
             
         }
+    }
+
+    public void AddGoat(GameObject _goat)
+    {
+        goats.Enqueue(_goat);
+    }
+
+    public GameObject GoatThrown()
+    {
+        GameObject thrownGoat = goats.Dequeue();
+        goats.Enqueue(thrownGoat);
+        return thrownGoat;
     }
 }
