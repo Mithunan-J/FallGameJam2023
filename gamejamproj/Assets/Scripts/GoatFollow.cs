@@ -9,16 +9,19 @@ public class GoatFollow : MonoBehaviour
     public float distance;
     public float stoppingDistance = 0.5f;
     public bool follow = true;
+    Animator goat_animator;
     // Start is called before the first frame update
     void Start()
     {
        player = GameObject.FindGameObjectWithTag("Player");
+       goat_animator = GetComponent<Animator>();
     }
 
     private void FixedUpdate()
     {
         if(follow == true)
         {
+            goat_animator.SetBool("isMoving", true);
             distance = Vector2.Distance(transform.position, player.transform.position);
             Vector2 direction = player.transform.position - transform.position;
 
@@ -32,16 +35,26 @@ public class GoatFollow : MonoBehaviour
 
             if (distance > stoppingDistance)
             {
+                goat_animator.SetBool("isMoving", true);
                 transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.fixedDeltaTime);
-                transform.rotation = Quaternion.Euler(Vector3.forward * angle);
+                //transform.rotation = Quaternion.Euler(Vector3.forward * angle);
             }
-        }       
+            else
+            {
+                goat_animator.SetBool("isMoving", false);
+            }
+        } 
+        else
+        {
+            //goat_animator.SetBool("isMoving", false);
+        }
         
         
     }
 
     IEnumerator GoatThrownCooldown()
     {
+        goat_animator.SetBool("isFlying", true);
         Debug.Log("Goat Cooldown started");
         follow = false;
         float currentTime = 0f;
@@ -55,6 +68,7 @@ public class GoatFollow : MonoBehaviour
         }
         follow = true;
         Debug.Log("Goat cooldown ended");
+        goat_animator.SetBool("isFlying", false);
     }
 
     public void StartGoatCooldown()
