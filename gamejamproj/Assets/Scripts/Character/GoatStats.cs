@@ -32,6 +32,11 @@ public class GoatStats : MonoBehaviour
         //get player
         player = GameObject.FindGameObjectWithTag("Player");
 
+        //ignore player collissions
+        Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+        //Physics2D.IgnoreLayerCollision(player.layer, gameObject.layer);
+        //Physics2D.IgnoreCollision(GetComponent<Collider2D>(), player.GetComponent<Collider2D>());
+
         //assign random goat type
         type = (GoatType)Random.Range(0, System.Enum.GetValues(typeof(GoatType)).Length);
 
@@ -65,6 +70,7 @@ public class GoatStats : MonoBehaviour
                     goatColour = Color.green;
                     GetComponent<SpriteRenderer>().color = goatColour;
                     player.GetComponent<PlayerStats>().IncreaseSpeed(1); //CHANGE THIS NUMBER ACCORDINGLY, HOW MUCH TO INCREASE SPEED
+                    player.GetComponent<PlayerController>().moveSpeed+=1; //CHANGE THIS NUMBER ACCORDINGLY, HOW MUCH TO INCREASE SPEED
                     this.gameObject.name = "Speed Goat";
                 }
                 break;
@@ -119,5 +125,6 @@ public class GoatStats : MonoBehaviour
                 break;
         }
     }
+
 
 }

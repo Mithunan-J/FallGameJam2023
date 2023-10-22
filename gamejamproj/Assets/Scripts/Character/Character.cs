@@ -31,7 +31,7 @@ public abstract class Character : MonoBehaviour
     {
         moveSpeed -=n;
     }
-    public void IncreaseHealth(float n)
+    public virtual void IncreaseHealth(float n)
     {
         health +=n;
     }

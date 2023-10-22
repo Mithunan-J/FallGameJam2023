@@ -17,9 +17,14 @@ public class EnemyStats : Character
     public float poisonTicker;
     float nextPoisonTime;
 
+    public Slider healthBar;
+
     public override void TakeDamage(float n)
     {
         base.TakeDamage(n);
+        //health bar
+        healthBar.value = health/10;
+
         //kill enemy
         if (health <=0)
         {
@@ -41,6 +46,7 @@ public class EnemyStats : Character
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         //Debug.Log(GetSpeed());
+
     }
 
     // Update is called once per frame
@@ -48,7 +54,6 @@ public class EnemyStats : Character
     {
         //move enemy towards player
         transform.position = Vector2.MoveTowards(transform.position, player.position, moveSpeed);
-        Debug.Log(moveSpeed);
 
         //if poisoined
         if (poisoned)
@@ -83,7 +88,7 @@ public class EnemyStats : Character
             case GoatType.Ice:
                 {
                     //slow down enemy
-                    DecreaseSpeed(-1); //change this later
+                    DecreaseSpeed(1); //change this later
                     //add ice effect?
                 }
                 break;
@@ -109,7 +114,8 @@ public class EnemyStats : Character
         }
         if (other.tag == "Player") //if enemy collides with player, what happens?
         {
-
+            GameObject _player = GameObject.FindGameObjectWithTag("Player");
+            _player.GetComponent<PlayerStats>().TakeDamage(1);
         }
     }
 }

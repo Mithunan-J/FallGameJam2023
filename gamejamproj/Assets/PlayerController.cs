@@ -37,6 +37,7 @@ public class PlayerController : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
+
     
     private void FixedUpdate()
     {
@@ -123,6 +124,16 @@ public class PlayerController : MonoBehaviour
         goatProjectile.GetComponent<Rigidbody2D>().AddForce(firePoint.up * fireForce, ForceMode2D.Impulse);
 
         animator.SetTrigger("swordAttack");
+
+        GameObject _goat = GameObject.Find("AudioManager");
+        if(_goat != null)
+        {
+            _goat.GetComponent<NewAudioManager>().GoatThrownAudio();
+        }
+        else
+        {
+            Debug.Log("Goat not found");
+        }
     }
 
     public void LockMovement()

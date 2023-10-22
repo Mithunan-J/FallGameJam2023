@@ -19,10 +19,12 @@ public class GameOver : MonoBehaviour
 
     public void StartOver()
     {
+        Time.timeScale =1;
         SceneManager.LoadScene("TestScene"); //might need to change this
     }
     public void MainMenu()
     {
+         Time.timeScale =1;
         SceneManager.LoadScene("MainMenu"); //might need to change this
     }
 }
