@@ -17,9 +17,14 @@ public class EnemyStats : Character
     public float poisonTicker;
     float nextPoisonTime;
 
+    public Slider healthBar;
+
     public override void TakeDamage(float n)
     {
         base.TakeDamage(n);
+        //health bar
+        healthBar.value = health/10;
+
         //kill enemy
         if (health <=0)
         {
@@ -41,6 +46,7 @@ public class EnemyStats : Character
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         //Debug.Log(GetSpeed());
+
     }
 
     // Update is called once per frame

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerStats : Character
 {
@@ -10,6 +11,8 @@ public class PlayerStats : Character
     //game over UI
     public GameObject gameOver;
     public GameObject explosion;
+
+     public Slider healthBar;
     
     // Start is called before the first frame update
     void Start()
@@ -24,15 +27,25 @@ public class PlayerStats : Character
     public override void TakeDamage(float n)
     {
         base.TakeDamage(n);
+         //health bar
+        healthBar.value = health/20;
         Debug.Log("Health Remaining: " + health);
         //kill PLAYER
         if (health <=0)
         {
+            //pause game
+            Time.timeScale =0; 
             //game over UI screen
             gameOver.SetActive(true);
             explosion.SetActive(true);
             explosion.transform.position = GameObject.FindGameObjectWithTag("Player").transform.position;
          }
+    }
+    public override void IncreaseHealth(float n)
+    {
+        base.IncreaseHealth(n);
+        //update health bar
+        healthBar.value = health/20;
     }
     void OnTriggerEnter2D(Collider2D other)
     {
