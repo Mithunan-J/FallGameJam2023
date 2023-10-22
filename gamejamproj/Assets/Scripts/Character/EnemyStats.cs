@@ -48,7 +48,6 @@ public class EnemyStats : Character
     {
         //move enemy towards player
         transform.position = Vector2.MoveTowards(transform.position, player.position, moveSpeed);
-        Debug.Log(moveSpeed);
 
         //if poisoined
         if (poisoned)
@@ -109,7 +108,8 @@ public class EnemyStats : Character
         }
         if (other.tag == "Player") //if enemy collides with player, what happens?
         {
-
+            GameObject _player = GameObject.FindGameObjectWithTag("Player");
+            _player.GetComponent<PlayerStats>().TakeDamage(1);
         }
     }
 }

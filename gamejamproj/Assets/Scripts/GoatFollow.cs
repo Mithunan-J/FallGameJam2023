@@ -55,7 +55,6 @@ public class GoatFollow : MonoBehaviour
     IEnumerator GoatThrownCooldown()
     {
         goat_animator.SetBool("isFlying", true);
-        Debug.Log("Goat Cooldown started");
         follow = false;
         float currentTime = 0f;
         float targetTime = 3f;
@@ -63,11 +62,9 @@ public class GoatFollow : MonoBehaviour
         while(currentTime < targetTime)
         {
             currentTime += Time.deltaTime;
-            Debug.Log("Current Time: " + currentTime);
             yield return null;
         }
         follow = true;
-        Debug.Log("Goat cooldown ended");
         goat_animator.SetBool("isFlying", false);
     }
 

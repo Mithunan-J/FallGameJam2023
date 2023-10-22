@@ -71,7 +71,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -207,7 +207,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2830792957699078844
 RectTransform:
   m_ObjectHideFlags: 0
@@ -391,7 +391,7 @@ GameObject:
   - component: {fileID: 2937232775250219611}
   - component: {fileID: 2402845569915072726}
   - component: {fileID: 1528769640647549268}
-  - component: {fileID: 4071903087072329765}
+  - component: {fileID: 5449582658126577974}
   m_Layer: 0
   m_Name: Demon_Placeholder
   m_TagString: Enemy
@@ -408,7 +408,7 @@ Transform:
   m_GameObject: {fileID: 8550370257376675507}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.12299, y: 0.38957, z: 0}
-  m_LocalScale: {x: 0.16915, y: 0.16915, z: 0.16915}
+  m_LocalScale: {x: 0.76935005, y: 0.76935005, z: 0.76935005}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2830792957699078844}
@@ -456,7 +456,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7a2f9915643624648932ebdcdc738efa, type: 3}
   m_Color: {r: 0.8773585, g: 0.22678883, b: 0.22678883, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -485,8 +485,8 @@ MonoBehaviour:
   deathEffect: {fileID: 166151690821447122, guid: 8a83d50eb6e5efb479c023c03eb45b49, type: 3}
   fireEffect: {fileID: 4911430769333392440, guid: 216da2fc2551faf4da9c3265ca00aeb0, type: 3}
   poisonTicker: 1
---- !u!60 &4071903087072329765
-PolygonCollider2D:
+--- !u!61 &5449582658126577974
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -501,15 +501,13 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.28866667}
-    oldSize: {x: 1, y: 1}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.48, y: 0.48}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0, y: 0.5773587}
-      - {x: -0.5, y: -0.28866667}
-      - {x: 0.5, y: -0.28866667}
+  serializedVersion: 2
+  m_Size: {x: 0.48, y: 0.48}
+  m_EdgeRadius: 0
