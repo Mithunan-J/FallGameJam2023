@@ -8,12 +8,12 @@ public class PlayerStats : Character
     public Queue<GameObject> goats = new Queue<GameObject>(); // a list storing all the goats the player has collected.
 
     //game over UI
-    GameObject gameOver;
+    public GameObject gameOver;
+    public GameObject explosion;
     
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -24,11 +24,14 @@ public class PlayerStats : Character
     public override void TakeDamage(float n)
     {
         base.TakeDamage(n);
+        Debug.Log("Health Remaining: " + health);
         //kill PLAYER
         if (health <=0)
         {
             //game over UI screen
             gameOver.SetActive(true);
+            explosion.SetActive(true);
+            explosion.transform.position = GameObject.FindGameObjectWithTag("Player").transform.position;
          }
     }
     void OnTriggerEnter2D(Collider2D other)
