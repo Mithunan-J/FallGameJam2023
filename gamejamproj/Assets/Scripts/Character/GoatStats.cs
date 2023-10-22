@@ -70,6 +70,7 @@ public class GoatStats : MonoBehaviour
                     goatColour = Color.green;
                     GetComponent<SpriteRenderer>().color = goatColour;
                     player.GetComponent<PlayerStats>().IncreaseSpeed(1); //CHANGE THIS NUMBER ACCORDINGLY, HOW MUCH TO INCREASE SPEED
+                    player.GetComponent<PlayerController>().moveSpeed+=1; //CHANGE THIS NUMBER ACCORDINGLY, HOW MUCH TO INCREASE SPEED
                     this.gameObject.name = "Speed Goat";
                 }
                 break;

@@ -37,6 +37,7 @@ public class PlayerController : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
+
     
     private void FixedUpdate()
     {

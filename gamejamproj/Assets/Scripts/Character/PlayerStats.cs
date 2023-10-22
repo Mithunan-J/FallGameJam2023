@@ -8,7 +8,7 @@ public class PlayerStats : Character
     public Queue<GameObject> goats = new Queue<GameObject>(); // a list storing all the goats the player has collected.
 
     //game over UI
-    GameObject gameOver;
+    public GameObject gameOver;
     
     // Start is called before the first frame update
     void Start()
@@ -33,9 +33,12 @@ public class PlayerStats : Character
     }
     void OnTriggerEnter2D(Collider2D other)
     {
-         if (other.tag == "EnemyProjectile") //change this tag later
+         if (other.tag == "Enemy") //change this tag later
         {
-            TakeDamage(-1); //other.getcomponent....damage
+            TakeDamage(1); //other.getcomponent....damage
+            //push back?
+            Vector2 impulse = (other.transform.position - transform.position).normalized;
+           // GetComponent<Rigidbody2D>().AddForce(impulse *1.0f, ForceMode2D.Impulse);
             
         }
     }

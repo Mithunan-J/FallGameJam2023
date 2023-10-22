@@ -83,7 +83,7 @@ public class EnemyStats : Character
             case GoatType.Ice:
                 {
                     //slow down enemy
-                    DecreaseSpeed(-1); //change this later
+                    DecreaseSpeed(1); //change this later
                     //add ice effect?
                 }
                 break;
