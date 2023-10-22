@@ -34,7 +34,7 @@ public class GoatStats : MonoBehaviour
 
         //ignore player collissions
         Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), GetComponent<Collider2D>());
-        Physics2D.IgnoreLayerCollision(player.layer, gameObject.layer);
+        //Physics2D.IgnoreLayerCollision(player.layer, gameObject.layer);
         //Physics2D.IgnoreCollision(GetComponent<Collider2D>(), player.GetComponent<Collider2D>());
 
         //assign random goat type
