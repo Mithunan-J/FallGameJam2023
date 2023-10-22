@@ -32,6 +32,11 @@ public class GoatStats : MonoBehaviour
         //get player
         player = GameObject.FindGameObjectWithTag("Player");
 
+        //ignore player collissions
+        Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+        Physics2D.IgnoreLayerCollision(player.layer, gameObject.layer);
+        //Physics2D.IgnoreCollision(GetComponent<Collider2D>(), player.GetComponent<Collider2D>());
+
         //assign random goat type
         type = (GoatType)Random.Range(0, System.Enum.GetValues(typeof(GoatType)).Length);
 
@@ -119,5 +124,6 @@ public class GoatStats : MonoBehaviour
                 break;
         }
     }
+
 
 }
