@@ -9,6 +9,8 @@ public abstract class Character : MonoBehaviour
     //shared variables
     public float health;
     public float moveSpeed;
+
+    protected float MAX_SPEED = 5;
     
     public float GetHealth()
     {

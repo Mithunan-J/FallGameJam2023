@@ -16,7 +16,7 @@ public enum GoatType
 
 }
 
-public class GoatStats : MonoBehaviour
+public class GoatStats : Character
 {
     GoatType type;
     Color goatColour;
@@ -70,7 +70,8 @@ public class GoatStats : MonoBehaviour
                     goatColour = Color.green;
                     GetComponent<SpriteRenderer>().color = goatColour;
                     player.GetComponent<PlayerStats>().IncreaseSpeed(1); //CHANGE THIS NUMBER ACCORDINGLY, HOW MUCH TO INCREASE SPEED
-                    player.GetComponent<PlayerController>().moveSpeed+=1; //CHANGE THIS NUMBER ACCORDINGLY, HOW MUCH TO INCREASE SPEED
+                    if (player.GetComponent<PlayerController>().moveSpeed < MAX_SPEED)
+                        player.GetComponent<PlayerController>().moveSpeed+=0.5f; //CHANGE THIS NUMBER ACCORDINGLY, HOW MUCH TO INCREASE SPEED
                     this.gameObject.name = "Speed Goat";
                 }
                 break;
@@ -118,7 +119,7 @@ public class GoatStats : MonoBehaviour
                 break;
             case GoatType.Chunky:
                 {
-                    this.gameObject.transform.localScale.Set(0.3f, 0.3f, 0.3f);
+                    transform.localScale += new Vector3(0.3f, 0.3f, 0.3f);
                 }
                 break;
             default:

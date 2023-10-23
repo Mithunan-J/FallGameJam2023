@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 
 
@@ -35,6 +36,8 @@ public class EnemyStats : Character
             GameObject newGoat;
             newGoat = Object.Instantiate(goatPrefab, GameObject.FindWithTag("Player").transform.position, Quaternion.identity);
 
+            //increase score
+            GameObject.FindGameObjectWithTag("GameController").GetComponent<ScoreManager>().instance.IncreaseScore(100);
 
             Destroy(gameObject);            
         }
@@ -85,24 +88,24 @@ public class EnemyStats : Character
                     //+AOE? aoe on the effect?
                }
                 break;
-            case GoatType.Ice:
+                case GoatType.Ice:
                 {
                     //slow down enemy
-                    DecreaseSpeed(1); //change this later
+                    DecreaseSpeed(moveSpeed/2.0f); //change this later
                     //add ice effect?
                 }
                 break;
-            case GoatType.Poison:
+                case GoatType.Poison:
                 {
                     poisoned = true;
                 }
                 break;
-            case GoatType.Chunky:
+                case GoatType.Chunky:
                 {
                     damage += 2;
                 }
                 break;
-            default:
+                default:
                 break;
             }
             TakeDamage(damage); //other.getcomponent....damage
